@@ -11,11 +11,94 @@
 #include <string>
 #include <time.h>
 
+
 using namespace rgb_matrix;
 
 volatile bool interrupt_received = false;
 static void InterruptHandler(int signo) {
   interrupt_received = true;
+}
+
+void Number1 (int xpos){
+ rgb_matrix::Drawline(canvas, xpos+1, ypos, xpos+1, ypos+4, &green);
+ rgb_matrix:SetPixel(xpos, ypos+1, 0, 255, 0);
+ rgb_matrix::Drawline(canvas, xpos, ypos+8, xpos+2, ypos+8, &green);
+}
+
+void Number2 (int xpos){
+  rgb_matrix:SetPixel(xpos+1, ypos, 0, 255, 0);
+  rgb_matrix:SetPixel(xpos, ypos+1, 0, 255, 0);
+  rgb_matrix::Drawline(canvas, xpos+2, ypos+1, xpos+2, ypos+2, &green);
+  rgb_matrix:SetPixel(xpos+1, ypos+3, 0, 255, 0);
+  rgb_matrix:SetPixel(xpos, ypos+8, 0, 255, 0);
+  rgb_matrix::Drawline(canvas, xpos, ypos+9, xpos+2, ypos+9, &green);
+}
+void Number3 (int xpos){
+  rgb_matrix::Drawline(canvas, xpos, ypos, xpos+1, ypos, &green);
+  rgb_matrix:SetPixel(xpos+2, ypos+1, 0, 255, 0);
+  rgb_matrix::Drawline(canvas, xpos, ypos+2, xpos+1, ypos+2, &green);
+  rgb_matrix::Drawline(canvas, xpos+2, ypos+3, xpos+2, ypos+8, &green);
+  rgb_matrix::Drawline(canvas, xpos, ypos+9, xpos+1, ypos+9, &green);
+}
+
+void Number4 (int xpos){
+  rgb_matrix::SetPixel(xpos+2, ypos, 0, 255, 0);
+  rgb_matrix::Drawline(canvas, xpos+1, ypos+1, xpos+2, ypos+1, &green);
+  rgb_matrix::Drawline(canvas, xpos, ypos+2, xpos, ypos+3, &green);
+  rgb_matrix::Drawline(canvas, xpos+1, ypos+3, xpos+2, ypos+3, &green);
+  rgb_matrix::SetPixel(xpos+2, ypos+2, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos+2, ypos+8, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos+2, ypos+9, 0, 255, 0);
+}
+
+void Number5 (int xpos){
+  rgb_matrix::Drawline(canvas, xpos, ypos, xpos+2, ypos, &green);
+  rgb_matrix::Drawline(canvas, xpos, ypos+1, xpos, ypos+2, &green);
+  rgb_matrix::Drawline(canvas, xpos, ypos+2, xpos+2, ypos+2, &green);
+  rgb_matrix::SetPixel(xpos+2, ypos+3, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos+2, ypos+8, 0, 255, 0);
+  rgb_matrix::Drawline(canvas, xpos, ypos+9, xpos+1, ypos+9, &green);
+}
+
+void Number6 (int xpos){
+ rgb_matrix::Drawline(canvas, xpos+1, ypos, xpos+2, ypos, &green);
+ rgb_matrix::SetPixel(xpos+1, ypos+3, 0, 255, 0);
+ rgb_matrix::SetPixel(xpos+2, ypos+8, 0, 255, 0);
+ rgb_matrix::Drawline(canvas, xpos, ypos+1, xpos, ypos+3, &green);
+ rgb_matrix::SetPixel(xpos, ypos+8, 0, 255, 0);
+ rgb_matrix::SetPixel(xpos+1, ypos+9, 0, 255, 0);
+}
+void Number7 (int xpos, int ypos){
+ rgb_matrix::Drawline(canvas, xpos, ypos, xpos+1, ypos, &green);
+ rgb_matrix::Drawline(canvas, xpos+2, ypos, xpos+2, ypos+1, &green);
+ rgb_matrix::Drawline(canvas, xpos+1, ypos+2, xpos+1, ypos+3, &green);
+ rgb_matrix::Drawline(canvas, xpos+1, ypos+8, xpos+1, ypos+9, &green);
+}
+
+void Number8 (int xpos, int ypos){
+  rgb_matrix::SetPixel(xpos+1, ypos, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos, ypos+1, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos+2, ypos+2, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos+1, ypos+3, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos, ypos+8, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos+2, ypos+8, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos+1, ypos+9, 0, 255, 0);
+}
+void Number9 (int xpos, int ypos){
+  rgb_matrix::Drawline(canvas, xpos, ypos, xpos+2, ypos, &green);
+  rgb_matrix::SetPixel(xpos, ypos+1, 0, 255, 0);
+  rgb_matrix::Drawline(canvas, xpos, ypos+2, xpos+1, ypos+2, &green);
+  rgb_matrix::Drawline(canvas, xpos+2, ypos+1, xpos+2, ypos+3, &green);
+  rgb_matrix::Drawline(canvas, xpos+2, ypos+8, xpos+2, ypos+9, &green);
+}
+
+void Number0 (int xpos, int ypos){
+  rgb_matrix::SetPixel(xpos+1, ypos, 0, 255, 0);
+  rgb_matrix::Drawline(canvas, xpos, ypos+1, xpos, ypos+3, &green);
+  rgb_matrix::Drawline(canvas, xpos+2, ypos+1, xpos+2, ypos+3, &green);
+  rgb_matrix::SetPixel(xpos+2, ypos+8, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos, ypos+8, 0, 255, 0);
+  rgb_matrix::SetPixel(xpos+1, ypos+9, 0, 255, 0);
 }
 
 static int usage(const char *progname) {
@@ -156,21 +239,13 @@ int main(int argc, char *argv[]) {
   rgb_matrix::SetPixel(17, 3, 255, 255, 255);
   rgb_matrix::Drawline(canvas, 16, 2, 16, 3, &color);
 
-//99 : 99
-  rgb_matrix::Drawline(canvas, 70, 0, 72, 0, &green);
-  rgb_matrix::SetPixel(70, 1, 0, 255, 0);
-  rgb_matrix::Drawline(canvas, 70, 2, 71, 2, &green);
-  rgb_matrix::Drawline(canvas, 72, 1, 25, 3, &green);
-  rgb_matrix::SetPixel(72, 8, 0, 255, 0);
+//9 : 9
 
+  Number9(70, 0);
   rgb_matrix::SetPixel(74, 1, 0, 255, 0);
   rgb_matrix::SetPixel(74, 3, 0, 255, 0);
+  Number9(76,0);
 
-  rgb_matrix::Drawline(canvas, 76, 0, 78, 0, &green);
-  rgb_matrix::SetPixel(76, 1, 0, 255, 0);
-  rgb_matrix::Drawline(canvas, 76, 2, 77, 2, &green);
-  rgb_matrix::Drawline(canvas, 78, 1, 78, 3, &green);
-  rgb_matrix::SetPixel(78, 8, 0, 255, 0);
  /*
  char text_buffer[256];
   struct timespec next_time;
